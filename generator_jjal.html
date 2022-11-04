@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    짤 생성기
+
+    
+    <p><label for="btn_upload">원본짤 업로드 : </label><input type="file" id="btn_upload"/></p>
+    
+    <input type="number" value="50" id="font_size"/> <input type="color" id="color_picker" />
+    <p><textarea id="text_out_up" cols="50" rows="2" class="text_jjal">짤 밖 위 텍스트</textarea></p>
+    <p><textarea id="text_in_up" cols="50" rows="2" class="text_jjal">짤 안 위 텍스트</textarea></p>
+    <p><textarea id="text_in_down" cols="50" rows="2" class="text_jjal">짤 안 아래 텍스트</textarea></p>
+    <p><textarea id="text_out_down" cols="50" rows="2" class="text_jjal">짤 밖 아래 텍스트</textarea></p>
+    
+
+    <div id="jjal_final">
+    <!-- <div style="position: absolute;" id="jjal_final">https://stackoverflow.com/questions/5278382/html-text-field-over-canvas-element -->
+        <div class="preview">
+            <p id="preview_out_up">짤 밖 위 텍스트</p>
+                <canvas id="jjal_origin" width="400" height="400"></canvas>
+            <p id="preview_out_down">짤 밖 아래 텍스트</p>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div>
+        
+        <button onclick="downloadimage()" id="down">완성짤 다운로드</button>
+    </div>
+
+
+
+
+
+    <script type="text/javascript" src="generator_jjal.js"></script> 
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script type="text/javascript" src="html2canvas.js"></script>
+    <link rel="stylesheet" type="text/css" href="generator_jjal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"><!-- noto sans -->
+    
+    
+</body>
+</html>

@@ -1,0 +1,26 @@
+#jjal_final{
+    font-size: 50px;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 100%;
+}
+
+
+canvas {
+    font-size: 50px;
+    font-family:'Noto Sans KR', sans-serif; 
+}
+
+div{
+    display: inline-block;/*div width 맞춤 https://stackoverflow.com/questions/450903/how-can-i-make-a-div-not-larger-than-its-contents*/
+    line-height: 100%;
+}
+p{
+    line-height: 0%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+
+   opacity: 1;
+/* http://daplus.net/html-%EC%88%AB%EC%9E%90%EB%A5%BC-%EC%9E%85%EB%A0%A5-%ED%95%A0-%EB%95%8C-%ED%95%AD%EC%83%81-%EC%9C%84%EC%AA%BD-%EC%95%84%EB%9E%98%EC%AA%BD-%ED%99%94%EC%82%B4%ED%91%9C%EB%A5%BC-%ED%91%9C/ */
+}
