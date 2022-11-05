@@ -48,7 +48,24 @@ function isImage(url) {//https://roufid.com/javascript-check-file-image/
 //     readImage(e.target)
 // })
 
+function hexToRGB(h) {//https://css-tricks.com/converting-color-spaces-in-javascript/
+  let r = 0, g = 0, b = 0;
 
+  // 3 digits
+  if (h.length == 4) {
+    r = "0x" + h[1] + h[1];
+    g = "0x" + h[2] + h[2];
+    b = "0x" + h[3] + h[3];
+
+  // 6 digits
+  } else if (h.length == 7) {
+    r = "0x" + h[1] + h[2];
+    g = "0x" + h[3] + h[4];
+    b = "0x" + h[5] + h[6];
+  }
+  
+  return "rgb("+ +r + "," + +g + "," + +b + ")";
+}
 
 
 
@@ -87,11 +104,11 @@ function DrawText() {
     var font_size = document.getElementById("font_size").value.toString(10)
     ctx.fillStyle = document.getElementById("color_picker").value;
     ctx.textBaseline = 'top';
-    ctx.font = font_size + "pt NotoSans CJK KR Regular";
+    ctx.font = font_size + "pt Noto Sans KR";
 
     
     // ctx.fillText(text_title_in_up, 0, 0);
-    var lineheight = font_size;//글자 위아래 간격
+    var lineheight = font_size * 1.2;//글자 위아래 간격
     var font_blank = font_size/10 + 5;//여백
     lines_in_up = text_title_in_up.split('\n')//https://stackoverflow.com/questions/5026961/html5-canvas-ctx-filltext-wont-do-line-breaks
     for (var i = 0; i<lines_in_up.length; i++)
@@ -110,6 +127,7 @@ function DynamicText(img) {
     DrawText(); 
     text_title_in_up = this.value;
   });
+
   document.getElementById('text_in_down').addEventListener('keyup', function() {//짤 안 아래 텍스트
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     DrawOverlay(img);
@@ -119,33 +137,36 @@ function DynamicText(img) {
 
   document.getElementById('text_out_up').addEventListener('keyup', function() {//짤 밖 위 텍스트
     document.getElementById("preview_out_up").innerText = document.getElementById("text_out_up").value
-
+    var font_size = document.getElementById("font_size").value.toString(10)
+    document.getElementById("preview_out_up").style.color = hexToRGB(document.getElementById("color_picker").value)
+    
     if (document.getElementById("text_out_up").value.length < 1){//document.defaultView.getComputedStyle(document.getElementById("preview_out_up")).getPropertyValue("font-size");
-      document.getElementById("preview_out_up").style.fontSize = "0px";
+      document.getElementById("preview_out_up").style.fontSize = "0pt";
       document.getElementById("preview_out_up").style.display ='none';
     }else{
-      var font_size = document.getElementById("font_size").value.toString(10)
-      document.getElementById("preview_out_up").style.fontSize = font_size + "px";
+      
+      document.getElementById("preview_out_up").style.fontSize = font_size + "pt";
       document.getElementById("preview_out_up").style.display ='';
 
 
-      // document.getElementById("preview_out_up").style.maxWidth = canvas.width.toString(10) + "px"//텍스트 가로 제한
+      // document.getElementById("preview_out_up").style.maxWidth = canvas.width.toString(10) + "pt"//텍스트 가로 제한
 
     }
   });
   
   document.getElementById('text_out_down').addEventListener('keyup', function() {//짤 밖 아래 텍스트
     document.getElementById("preview_out_down").innerText = document.getElementById("text_out_down").value
-
+    var font_size = document.getElementById("font_size").value.toString(10)
+    document.getElementById("preview_out_down").style.color = hexToRGB(document.getElementById("color_picker").value)
     if (document.getElementById("text_out_down").value.length < 1){
-      document.getElementById("preview_out_down").style.fontSize = "0px";
+      document.getElementById("preview_out_down").style.fontSize = "0pt";
       document.getElementById("preview_out_down").style.display ='none';
     }else{
-      var font_size = document.getElementById("font_size").value.toString(10)
-      document.getElementById("preview_out_down").style.fontSize = font_size + "px";
+      
+      document.getElementById("preview_out_down").style.fontSize = font_size + "pt";
       document.getElementById("preview_out_down").style.display ='';
 
-      // document.getElementById("preview_out_down").style.maxWidth = canvas.width.toString(10) + "px"//텍스트 가로 제한
+      // document.getElementById("preview_out_down").style.maxWidth = canvas.width.toString(10) + "pt"//텍스트 가로 제한
     }
   });
 
